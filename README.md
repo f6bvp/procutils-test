@@ -1,16 +1,18 @@
-📄 README.md for procutils-test / procax25
+Absolument ! Le contenu que vous avez fourni est déjà excellent, mais nous allons le formater en Markdown (le standard de GitHub) en utilisant une structure plus visuelle avec des titres, des blocs de code syntaxiques (pour le bash), et en nettoyant les puces pour une meilleure lisibilité.
 
-📡 procutils-test / procax25
+Voici le fichier README.md prêt à être copié-collé sur votre dépôt GitHub :
 
-This directory is part of the procutils-test package and contains the procax25 application.
+📄 README.md for procutils-test / procax25 📡
 
-Objective
+Ce dépôt contient l'application procax25, faisant partie du paquetage procutils-test.
+
+🎯 Objective (Objectif)
 
 The main purpose of the procax25 application is to verify, validate, and demonstrate the correct usage of the parsing functions contained within the procutils.c module of the AX.25 library.
 
 This program is a simple diagnostic and testing utility, designed to read and display the state information of AX.25 connections exposed by the Linux kernel via the virtual file /proc/net/ax25.
 
-Key Features
+✨ Key Features (Fonctionnalités Clés)
 
     Reading /proc/net/ax25: Uses the read_proc_ax25() function (from procutils.c) to retrieve the complete list of active AX.25 connections.
 
@@ -20,7 +22,7 @@ Key Features
 
     Reversed Order: Displays connections in the reverse order of reading the /proc file, placing the most recent or most relevant connections at the top of the list.
 
-Dependencies
+🔗 Dependencies (Dépendances)
 
 This program depends on the AX.25 library for compilation and execution. Specifically, it requires:
 
@@ -28,7 +30,7 @@ This program depends on the AX.25 library for compilation and execution. Specifi
 
     The libax25 library for linking.
 
-Quick Installation and Compilation
+🚀 Quick Installation and Compilation (Installation Rapide)
 
 This package uses GNU Autotools for configuration. For detailed instructions, please refer to the INSTALL file.
 
@@ -49,10 +51,8 @@ Bash
 
     $ ./procax25
 
-Author and License
+👤 Author and License (Auteur et Licence)
 
     Author: Bernard Pidoux (F6BVP / AI7BG)
 
     License: This program is distributed under the terms of the GNU General Public License, version 2.0 (GPLv2) for Linux.
-root@ubuntu-f6bvp:/usr/local/src/ax25/linuxax25-master-nouv/ax25apps/procutils-test# 
-

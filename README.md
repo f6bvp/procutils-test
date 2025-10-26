@@ -1,11 +1,3 @@
-Absolument ! Le contenu que vous avez fourni est déjà excellent, mais nous allons le formater en Markdown (le standard de GitHub) en utilisant une structure plus visuelle avec des titres, des blocs de code syntaxiques (pour le bash), et en nettoyant les puces pour une meilleure lisibilité.
-
-Voici le fichier README.md prêt à être copié-collé sur votre dépôt GitHub :
-
-📄 README.md for procutils-test / procax25 📡
-
-Ce dépôt contient l'application procax25, faisant partie du paquetage procutils-test.
-
 🎯 Objective (Objectif)
 
 The main purpose of the procax25 application is to verify, validate, and demonstrate the correct usage of the parsing functions contained within the procutils.c module of the AX.25 library.

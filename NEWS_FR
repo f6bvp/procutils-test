@@ -1,0 +1,35 @@
+📰 NEWS pour procutils-test / procax25
+
+Version 1.0.0 (AAAA-MM-JJ)
+
+Améliorations et Vérifications
+
+Cette version introduit l'outil de diagnostic procax25, conçu pour valider les fonctions de la librairie AX.25, notamment suite à l'introduction de l'en-tête pour /proc/net/ax25.
+
+⚠️ Incohérences Détectées dans les Systèmes Linux
+
+L'utilisation de procax25 a mis en évidence des différences d'implémentation et de formatage de la sortie de /proc/net/ax25 en fonction des distributions Linux. Ces incohérences affectent la fiabilité de la lecture des données sans un parser robuste.
+
+1. Ordre des Lignes (Ordre des Sockets)
+
+L'ordre dans lequel les sockets AX.25 sont rapportées dans /proc/net/ax25 n'est pas cohérent entre les systèmes :
+
+    Comportement Typique (ex: Ubuntu) : Les connexions sont souvent listées dans l'ordre croissant de leur création ou de leur index interne.
+
+    Comportement Inversé (ex: Raspberry Pi OS / Certains noyaux) : La même liste peut être retournée dans l'ordre inverse.
+
+    L'application procax25 inverse systématiquement l'ordre de la liste chaînée après lecture, afin de présenter les sockets de manière homogène (les plus récentes ou les plus actives en premier) pour l'utilisateur final.
+
+2. Base de Numération des Champs Numériques
+
+Le format de certains champs numériques n'est pas strictement appliqué comme hexadécimal ou décimal par toutes les implémentations du noyau, ce qui crée une ambiguïté :
+
+Champ	Attendue	Distribution Incohérente (Ex.)	Note
+
+INODE	Hexadécimal (%08lx)	Décimal (%lu) sur Raspberry Pi OS	L'inode devrait être affiché en hexadécimal.
+T3	Hexadécimal	Décimal sur Raspberry Pi OS	La valeur du compteur T3 est formatée différemment.
+N2	Hexadécimal	Décimal sur Raspberry Pi OS	La valeur du compteur N2 est formatée différemment.
+
+    Action Requise : La fonction read_proc_ax25 de la librairie doit être robuste et tenter de lire ces valeurs en base décimale ou hexadécimale. 
+    Si le champ MAGIC n'est pas en base 16, cela peut également être un indicateur que tous les champs numériques sont en base 10. 
+    L'outil procax25 utilise le parser de la librairie pour gérer ces conversions.

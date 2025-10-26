@@ -1,0 +1,56 @@
+README.md pour procutils-test / procax25
+
+📡 procutils-test / procax25
+
+Ce répertoire fait partie du paquetage procutils-test et contient l'application procax25.
+
+Objectif
+
+L'objectif principal de l'application procax25 est de vérifier, valider et démontrer l'utilisation correcte des fonctions d'analyse (parsing) contenues dans le module procutils.c de la librairie AX.25.
+
+Ce programme est un utilitaire de diagnostic et de test simple, conçu pour lire et afficher les informations d'état des connexions AX.25 exposées par le noyau Linux via le fichier virtuel /proc/net/ax25.
+
+Fonctionnalités Clés
+
+    Lecture de /proc/net/ax25 : Utilise la fonction read_proc_ax25() (issue de procutils.c) pour récupérer la liste complète des connexions AX.25 actives.
+
+    Affichage Standardisé : Met en forme les données dans un tableau clair et lisible, facilitant l'interprétation des champs (MAGIC, DEV, SRC, DEST, Timers, RTT, etc.).
+
+    Support des Formats : Confirme si la sortie de /proc/net/ax25 inclut le nouvel en-tête (format que nous avons implémenté) ou utilise l'ancien format sans en-tête.
+
+    Ordre Inversé : Affiche les connexions dans l'ordre inverse de lecture du fichier /proc, plaçant les connexions les plus récentes ou les plus pertinentes en haut de la liste.
+
+Dépendances
+
+Ce programme dépend de la librairie AX.25 pour la compilation et l'exécution. En particulier, il nécessite :
+
+    Le fichier d'en-tête <netax25/procutils.h> et les autres headers du paquetage AX.25.
+
+    La librairie libax25 pour la liaison (linking).
+
+Installation et Compilation Rapide
+
+Ce paquetage utilise GNU Autotools pour la configuration. Pour des instructions détaillées, consultez le fichier INSTALL.
+
+    Préparation : Exécutez ./bootstrap.sh si le script configure est manquant (nécessaire après make distclean ou un clone Git).
+
+    Configuration :
+    Bash
+
+$ ./configure
+
+Compilation :
+Bash
+
+$ make
+
+Exécuter : L'exécutable procax25 sera créé et pourra être lancé directement :
+Bash
+
+    $ ./procax25
+
+Auteur et Licence
+
+    Auteur : Bernard Pidoux (F6BVP / AI7BG)
+
+    Licence : Ce programme est distribué sous les termes de la GNU General Public License, version 2.0 (GPLv2) pour Linux.

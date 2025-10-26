@@ -1,0 +1,77 @@
+Installation de procax25
+
+Ce document explique comment compiler et installer procax25.
+
+procax25 utilise GNU Autotools (Autoconf, Automake), le système de construction
+standard pour de nombreux projets sur les systèmes de type Unix.
+
+Prérequis
+---------
+Pour compiler ce logiciel, vous devez avoir installé :
+1. Un compilateur C (GNU GCC est recommandé).
+2. GNU Make.
+3. Les outils Autoconf, Automake et Libtool (pour générer le script configure).
+4. Les fichiers d'en-tête (headers) et les librairies de développement AX.25.
+   Le script configure recherchera les dépendances AX.25 dans les chemins
+   standards comme /usr/local/lib et /usr/include.
+
+Étapes de Compilation et d'Installation
+--------------------------------------
+
+1. Génération du script 'configure' (Si vous avez obtenu le code source directement
+   depuis un dépôt Git) :
+
+   Si le fichier 'configure' n'est pas présent, vous devez le générer en
+   lançant le script de bootstrap :
+
+     $ ./bootstrap.sh  (ou la séquence aclocal, autoconf, automake)
+
+2. Configuration :
+
+   Exécutez le script 'configure' pour vérifier votre environnement et générer
+   le Makefile adapté à votre système.
+
+     $ ./configure
+
+   Options de configuration courantes :
+   * Pour changer le répertoire d'installation (par défaut: /usr/local) :
+       $ ./configure --prefix=/votre/chemin/
+   * Pour de l'aide sur les options disponibles :
+       $ ./configure --help
+
+3. Compilation :
+
+   Compilez le programme :
+
+     $ make
+
+4. Installation :
+
+   Installez le programme et les fichiers associés dans les répertoires
+   système configurés. Vous aurez généralement besoin des droits de super-utilisateur.
+
+     $ sudo make install
+
+5. Nettoyage (Optionnel) :
+
+   Pour nettoyer les fichiers binaires et objets après la compilation :
+
+     $ make clean
+
+   Pour nettoyer tous les fichiers générés par la configuration (y compris
+   le Makefile et config.h), préparant le répertoire pour une nouvelle
+   compilation ou distribution :
+
+     $ make distclean
+
+Problèmes Courants
+------------------
+* "Package 'ax25-config' not found": Si le script configure ne trouve pas
+    les librairies AX.25, il essaiera de localiser manuellement les fichiers
+    dans des chemins courants. Si l'erreur persiste, assurez-vous que les
+    librairies AX.25 et leurs fichiers de développement sont installés.
+
+* Problèmes de permissions : L'étape 'make install' nécessite souvent
+    des droits d'administrateur (utilisation de 'sudo').
+
+FIN DU DOCUMENT INSTALL

@@ -1,0 +1,36 @@
+📰 NEWS for procutils-test / procax25
+
+Version 1.0.0 (YYYY-MM-DD)
+
+Enhancements and Verification
+
+This release introduces the procax25 diagnostic tool, designed to validate the functions within the AX.25 library,
+particularly following the introduction of the header line for /proc/net/ax25.
+
+⚠️ Detected Inconsistencies Across Linux Systems
+
+The use of procax25 has highlighted implementation and formatting differences in the /proc/net/ax25 output across
+various Linux distributions. These inconsistencies affect the reliability of data parsing without a robust parser.
+
+1. Line Ordering (Socket Indexing)
+
+The order in which AX.25 sockets are reported in /proc/net/ax25 is not consistent across different systems:
+
+    Typical Behavior (e.g., Ubuntu): Connections are often listed in ascending order of their creation or internal index.
+
+    Reversed Behavior (e.g., Raspberry Pi OS / Certain Kernels): The same list may be returned in reverse order.
+
+    Note: The procax25 application systematically reverses the linked list after reading to present the sockets in a 
+    consistent order (most recent or most active first) to the end-user.
+
+2. Number Base of Numeric Fields
+
+The formatting of certain numeric fields is not strictly enforced as hexadecimal or decimal by all kernel implementations, leading to ambiguity:
+Field	Expected Format	Inconsistent Distribution (Example)	Note
+INODE	Hexadecimal (%08lx)	Decimal (%lu) on Raspberry Pi OS	The inode value should ideally be displayed in hexadecimal.
+T3	Hexadecimal	Decimal on Raspberry Pi OS	The T3 timer value is formatted inconsistently.
+N2	Hexadecimal	Decimal on Raspberry Pi OS	The N2 counter value is formatted inconsistently.
+
+    Action Required: The read_proc_ax25 function in the library must be robust and attempt to read these values using either decimal or hexadecimal base. 
+    If the MAGIC field is not in base 16, it can also be an indicator that all numeric fields are being output in base 10.
+    The procax25 tool relies on the library parser to handle these conversions.

@@ -1,10 +1,14 @@
-🎯 Objective (Objectif)
+README.md for procutils-test / procax25
+
+Ce dépôt contient l'application procax25, faisant partie du paquetage procutils-test.
+
+Objective (Objectif)
 
 The main purpose of the procax25 application is to verify, validate, and demonstrate the correct usage of the parsing functions contained within the procutils.c module of the AX.25 library.
 
 This program is a simple diagnostic and testing utility, designed to read and display the state information of AX.25 connections exposed by the Linux kernel via the virtual file /proc/net/ax25.
 
-✨ Key Features (Fonctionnalités Clés)
+Key Features (Fonctionnalités Clés)
 
     Reading /proc/net/ax25: Uses the read_proc_ax25() function (from procutils.c) to retrieve the complete list of active AX.25 connections.
 
@@ -14,7 +18,7 @@ This program is a simple diagnostic and testing utility, designed to read and di
 
     Reversed Order: Displays connections in the reverse order of reading the /proc file, placing the most recent or most relevant connections at the top of the list.
 
-🔗 Dependencies (Dépendances)
+Dependencies (Dépendances)
 
 This program depends on the AX.25 library for compilation and execution. Specifically, it requires:
 
@@ -22,7 +26,7 @@ This program depends on the AX.25 library for compilation and execution. Specifi
 
     The libax25 library for linking.
 
-🚀 Quick Installation and Compilation (Installation Rapide)
+Quick Installation and Compilation (Installation Rapide)
 
 This package uses GNU Autotools for configuration. For detailed instructions, please refer to the INSTALL file.
 
@@ -43,7 +47,7 @@ Bash
 
     $ ./procax25
 
-👤 Author and License (Auteur et Licence)
+Author and License (Auteur et Licence)
 
     Author: Bernard Pidoux (F6BVP / AI7BG)
 
